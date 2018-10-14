@@ -1,15 +1,22 @@
 {
+  "additionalProperties": false,
   "title": "Product",
-  "description": "A product from Acme's catalog",
+  "description": "A product from Bob's catalog",
   "type": "object",
+  "required": ["productId", "productName", "price", "email"],
   "properties": {
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
     "productId": {
       "description": "The unique identifier for a product",
       "type": "integer"
     },
     "productName": {
       "description": "Name of the product",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-zA-Z]*$"
     },
     "price": {
       "description": "The price of the product",
@@ -27,19 +34,12 @@
     },
     "dimensions": {
       "type": "object",
+      "required": ["length", "width", "height"],
       "properties": {
-        "length": {
-          "type": "integer"
-        },
-        "width": {
-          "type": "integer"
-        },
-        "height": {
-          "type": "number"
-        }
-      },
-      "required": ["length", "width", "height"]
+        "length": { "type": "integer" },
+        "width": { "type": "integer" },
+        "height": { "type": "number" }
+      }
     }
-  },
-  "required": ["productId", "productName", "price"]
+  }
 }
